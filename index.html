@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="//storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+<script>
+
+    window.addEventListener('load', onVrViewLoad)
+    function onVrViewLoad() {
+        var vrView = new VRView.Player('#vrview', {
+            image: 'http://i.imgur.com/2INUrL8.jpg',
+            is_stereo: false,
+            width: 1200,
+            height: 600
+        });
+    }
+
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Sample VR webpage</title>
+</head>
+<body>
+<div id="vrview"></div>
+</body>
+</html>
