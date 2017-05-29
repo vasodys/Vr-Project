@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Aframe Vr</title>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="functions.js"></script>
 </head>
-<script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
 <body>
 <a-scene>
-    <a-sky src="https://i.imgur.com/2INUrL8.jpg" rotation="0 -130 0"></a-sky>
+
+    <a-sky src="rsz_street_view_3603.jpg" rotation="0 90 0"></a-sky>
+    <a-entity position="0 0 0" camera="active:true;userHeight:0;near:0.01" rotation="0 0 0" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" wasd-controls="">
+        <a-entity position="0 0 -1"
+                  geometry="primitive: circle; radius: 0.01; thetaStart: 90"
+                  material="color: black; shader: flat">
+        </a-entity>
+        <a-entity id="indicator"
+                  cursor="fuse: true; fuseTimeout: 1000"
+                  position="0 0 -1"
+                  rotation="0 0 0"
+                  geometry="primitive: ring; radiusOuter: 0.03; radiusInner: 0.025; thetaStart: 90; thetaLength: 0"
+                  material="side: double;color: black; shader: flat"
+                  raycaster="far: 20; interval: 50; objects: .clickable">
+            <a-animation begin="fusing" easing="linear" attribute="geometry.thetaLength"
+                         from="0" to="360" dur="1000" fill="none" end="mouseleave"></a-animation>
+            <a-animation begin="click" easing="ease-in-out" attribute="scale" direction="alternate"
+                         from="1 1 1" to="1.5 1.5 1.5" dur="125" delay="0" repeat="1"></a-animation>
+            <a-animation begin="mouseleave" easing="linear" attribute="geometry.thetaLength"
+                         to="0" dur="0" delay="0"></a-animation>
+        </a-entity>
+    </a-entity>
+    <a-sphere id="sphere" class="clickable" rotation="0 270 0" material="side:back;normalScale:{&quot;x&quot;:null}" geometry="mergeTo:null;primitive:sphere;radius:10;phiLength:21.44;phiStart:281.95;thetaLength:9.14;thetaStart:114.96"></a-sphere>
+    <a-text value="Hello, World!"></a-text>
 </a-scene>
 </body>
 </html>
